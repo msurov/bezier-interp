@@ -1,0 +1,1277 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula $s=\begin{cases}
+at^{2}\\
+at_{1}^{2}\\
+\\
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $v=\begin{cases}
+at & t\in\left[0,v/a\right)\\
+v & t\in\left[v/a,v/a+d\right)\\
+v-b\left(t-v/a-d\right) & t\in\left[v/a+d,v/b+v/a+d\right)
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $s=\begin{cases}
+\frac{at^{2}}{2} & t\in\left[0,v/a\right)\\
+vt-\frac{v^{2}}{2a} & t\in\left[v/a,v/a+d\right)\\
+vt+b\left(v/a+d\right)t-\frac{bt^{2}}{2} & t\in\left[v/a+d,v/b+v/a+d\right)
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+—
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $s=\begin{cases}
+\frac{at^{2}}{2} & t\in\left[0,t_{1}\right)\\
+vt-\frac{vt_{1}}{2} & t\in\left[t_{1},t_{2}\right)\\
+vt-\frac{vt_{1}}{2}-\frac{b\left(t-t_{2}\right)^{2}}{2} & t\in\left[t_{2},t_{3}\right)
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $v=\begin{cases}
+at & t\in\left[0,t_{1}\right)\\
+v & t\in\left[t_{1},t_{2}\right)\\
+v-b\left(t-t_{2}\right) & t\in\left[t_{2},t_{3}\right)
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+—
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $t_{1}=v/a$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $t_{2}=\frac{s_{3}}{v}-\frac{v}{2b}+\frac{v}{2a}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $t_{3}=\frac{s_{3}}{v}+\frac{v}{2b}+\frac{v}{2a}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+—
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Bezier curve
+\end_layout
+
+\begin_layout Standard
+By definition Bezier curve of degree 
+\begin_inset Formula $n$
+\end_inset
+
+ is
+\begin_inset Formula 
+\begin{align*}
+\Gamma\left(t\right) & =\sum_{i=0}^{n}b_{i,n}\left(t\right)c_{i}\\
+b_{i,n}\left(t\right) & =\left(\begin{array}{c}
+n\\
+i
+\end{array}\right)t^{i}\left(1-t\right)^{n-i}\\
+t & \in\left[0,1\right].
+\end{align*}
+
+\end_inset
+
+In matrix form this can be written as 
+\begin_inset Formula 
+\begin{align*}
+\Gamma\left(t\right) & =B_{n}\left(t\right)c\\
+B_{n} & :\mathbb{R}\to\mathbb{R}^{1\times\left(n+1\right)}\\
+c & \in\mathbb{R}^{\left(n+1\right)\times k}
+\end{align*}
+
+\end_inset
+
+for a curve 
+\begin_inset Formula $\Gamma:\mathbb{R}\to\mathbb{R}^{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The coefficients (control points 
+\begin_inset Formula $c$
+\end_inset
+
+) are elements of linear space (real vector 
+\begin_inset Formula $\mathbb{R}^{k}$
+\end_inset
+
+, or matrix, or just floating-point numbers).
+ 
+\end_layout
+
+\begin_layout Standard
+Its derivative
+\begin_inset Formula 
+\[
+\dot{\Gamma}\left(t\right)=n\sum_{i=0}^{n-1}b_{i,n-1}\left(t\right)\left(c_{i+1}-c_{i}\right)
+\]
+
+\end_inset
+
+is a Bezier curve of degree 
+\begin_inset Formula $n-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Interpolation
+\end_layout
+
+\begin_layout Standard
+The problem: we have 
+\begin_inset Formula $N$
+\end_inset
+
+ points 
+\begin_inset Formula $p_{1},p_{2},...,p_{N}\in V$
+\end_inset
+
+.
+ The goal is to construct Bezier curve 
+\begin_inset Formula $\Gamma_{1}$
+\end_inset
+
+ between the points 
+\begin_inset Formula $p_{1},p_{2}$
+\end_inset
+
+, curve 
+\begin_inset Formula $\Gamma_{2}$
+\end_inset
+
+ between 
+\begin_inset Formula $p_{2},p_{3}$
+\end_inset
+
+, etc.
+ In total 
+\begin_inset Formula $N-1$
+\end_inset
+
+ curves 
+\begin_inset Formula $\Gamma_{1},\Gamma_{2},...,\Gamma_{N-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The requirements:
+\end_layout
+
+\begin_layout Itemize
+the continuity 
+\begin_inset Formula $\Gamma_{m}\left(t\right)\vert_{t=1}=\Gamma_{m+1}\left(t\right)\vert_{t=0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+smoothness 
+\begin_inset Formula $\frac{d^{k}\Gamma_{m}\left(t\right)}{dt^{k}}\vert_{t=1}=\frac{d^{k}\Gamma_{m+1}\left(t\right)}{dt^{k}}\vert_{t=0}$
+\end_inset
+
+ for any 
+\begin_inset Formula $m=1..N-1$
+\end_inset
+
+, and any 
+\begin_inset Formula $k=1..n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+boundary conditions, for example 
+\begin_inset Formula $\dot{\Gamma}_{1}\left(0\right)=l$
+\end_inset
+
+, 
+\begin_inset Formula $\dot{\Gamma}_{N-1}\left(1\right)=r$
+\end_inset
+
+, etc
+\end_layout
+
+\begin_layout Itemize
+optimality, for example minimize 
+\begin_inset Formula $\sum_{m}\int_{0}^{1}\left\Vert \ddot{\Gamma}_{m}\left(t\right)\right\Vert ^{2}dt$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Each of these conditions give a system of linear algebraic equations.
+\end_layout
+
+\begin_layout Subsubsection
+Continuity
+\end_layout
+
+\begin_layout Standard
+The continuity condition gives constraints for 
+\begin_inset Formula $c_{0},n_{n}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+From definition will find
+\begin_inset Formula 
+\begin{align*}
+\Gamma_{1}\left(0\right) & =p_{1}=c_{0}^{1}\\
+\Gamma_{1}\left(1\right) & =p_{2}=c_{n}^{1}\\
+\Gamma_{2}\left(0\right) & =p_{2}=c_{0}^{2}\\
+\Gamma_{2}\left(1\right) & =p_{3}=c_{n}^{2}
+\end{align*}
+
+\end_inset
+
+etc.
+ In general:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+c_{0}^{m} & =p_{m}\\
+c_{n}^{m} & =p_{m+1}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Smoothness
+\end_layout
+
+\begin_layout Standard
+The smoothness condition gives constraints for coefficients 
+\begin_inset Formula $c_{1},c_{2},...,c_{n-1}$
+\end_inset
+
+.
+ With the help of derivative's formula 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\dot{\Gamma}\left(t\right) & =n\sum_{i=0}^{n-1}b_{i,n-1}\left(t\right)\left(c_{i+1}-c_{i}\right)\\
+ & =B_{n-1}\left(t\right)D_{1}c
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+D_{1}:=n\cdot\left(\begin{array}{cccc}
+-1 & 1\\
+ & -1 & 1\\
+ &  &  & \ddots
+\end{array}\right)\in\mathbb{R}^{\left(n-1\right)\times n}
+\]
+
+\end_inset
+
+The second derivative is 
+\begin_inset Formula 
+\begin{align*}
+\ddot{\Gamma}\left(t\right) & =B_{n-2}\left(t\right)D_{2}c,\\
+D_{2} & :=n\cdot\left(n-1\right)\cdot\left(\begin{array}{cccccc}
+1 & -2 & 1\\
+ & 1 & -2 & 1\\
+ &  & 1 & -2 & 1\\
+ &  &  &  &  & \ddots
+\end{array}\right)\in\mathbb{R}^{\left(n-2\right)\times n}
+\end{align*}
+
+\end_inset
+
+etc.
+ 
+\begin_inset Formula $k$
+\end_inset
+
+-th derivative is 
+\begin_inset Formula 
+\[
+\Gamma^{\left(k\right)}\left(t\right)=\frac{n!}{\left(n-k\right)!}\sum_{i=0}^{n-2}b_{i,n-k}\left(t\right)\sum_{j=0}^{k}\left(\begin{array}{c}
+k\\
+j
+\end{array}\right)\left(-1\right)^{k-j}c_{i+j}.
+\]
+
+\end_inset
+
+require
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Gamma_{m}^{\left(k\right)}\left(1\right)=\Gamma_{m+1}^{\left(k\right)}\left(0\right)
+\]
+
+\end_inset
+
+will have
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+\sum_{j=0}^{k}\left(\begin{array}{c}
+k\\
+j
+\end{array}\right)\left(-1\right)^{k-j}c_{n-k+j}^{m}=\sum_{j=0}^{k}\left(\begin{array}{c}
+k\\
+j
+\end{array}\right)\left(-1\right)^{k-j}c_{j}^{m+1}.
+\]
+
+\end_inset
+
+In matrix form: 
+\begin_inset Formula 
+\[
+\left(\begin{array}{cccc}
+ &  &  & -1\\
+ &  & 1 & -1\\
+ & -1 & 2 & -1\\
+\iddots
+\end{array}\right)\cdot c^{m}+\left(\begin{array}{cccc}
+1\\
+-1 & 1\\
+1 & -2 & 1\\
+ &  &  & \ddots
+\end{array}\right)c^{m+1}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Smoothness + continuity in matrix form
+\end_layout
+
+\begin_layout Standard
+Let we have 3 points 
+\begin_inset Formula $p_{1},p_{2},p_{3}$
+\end_inset
+
+.
+ We are fitting the curve of degree 
+\begin_inset Formula $3$
+\end_inset
+
+.
+ Then, the unknown variable is the vector 
+\begin_inset Formula $\left(c_{0}^{1},c_{1}^{1},c_{2}^{1},c_{3}^{1},\,c_{0}^{2},c_{1}^{2},c_{2}^{2},c_{3}^{2}\right).$
+\end_inset
+
+ The linear system will look like
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\begin{array}{cc}
+\left(\begin{array}{cccc}
+1\\
+\\
+\\
+ &  &  & 1
+\end{array}\right) & \left(\begin{array}{cccc}
+\\
+\\
+\\
+\\
+\end{array}\right)\\
+\left(\begin{array}{cccc}
+ &  &  & -1\\
+ &  & 1 & -1\\
+ & -1 & 2 & -1\\
+\\
+\end{array}\right) & \left(\begin{array}{cccc}
+1\\
+-1 & 1\\
+1 & -2 & 1\\
+ &  &  & 1
+\end{array}\right)
+\end{array}\right)\cdot\left(\begin{array}{c}
+\left(\begin{array}{c}
+c_{0}^{1}\\
+c_{1}^{1}\\
+c_{2}^{1}\\
+c_{3}^{1}
+\end{array}\right)\\
+\left(\begin{array}{c}
+c_{0}^{2}\\
+c_{1}^{2}\\
+c_{2}^{2}\\
+c_{3}^{2}
+\end{array}\right)
+\end{array}\right)=\left(\begin{array}{c}
+\left(\begin{array}{c}
+p_{1}\\
+0\\
+0\\
+p_{2}
+\end{array}\right)\\
+\left(\begin{array}{c}
+0\\
+0\\
+0\\
+p_{3}
+\end{array}\right)
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here we have 
+\begin_inset Formula $8$
+\end_inset
+
+ unknowns, and 
+\begin_inset Formula $6$
+\end_inset
+
+ linearly independent equations.
+ In general when fitting 
+\begin_inset Formula $N$
+\end_inset
+
+ points by a curve of degree 
+\begin_inset Formula $n$
+\end_inset
+
+ we will have 
+\begin_inset Formula $\left(N-1\right)\cdot\left(n+1\right)$
+\end_inset
+
+ unknowns and 
+\begin_inset Formula $\left(N-2\right)\cdot\left(n+1\right)+2$
+\end_inset
+
+ equations.
+\end_layout
+
+\begin_layout Subsubsection
+Boundary conditions
+\end_layout
+
+\begin_layout Standard
+The rest 
+\begin_inset Formula $\left(n+1\right)-2$
+\end_inset
+
+ equations can be found, for example, from boundary conditons.
+ For example 
+\begin_inset Formula $\Gamma_{1}^{\left(k\right)}\left(0\right)=l^{k}$
+\end_inset
+
+ gives 
+\begin_inset Formula 
+\[
+\Gamma_{1}^{\left(k\right)}\left(0\right)=\frac{n!}{\left(n-k\right)!}\sum_{j=0}^{k}\left(\begin{array}{c}
+k\\
+j
+\end{array}\right)\left(-1\right)^{k-j}c_{j}^{1}=l^{k}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula $\Gamma_{N-1}^{\left(k\right)}\left(1\right)=r^{k}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\Gamma_{N-1}^{\left(k\right)}\left(1\right)=\frac{n!}{\left(n-k\right)!}\sum_{j=0}^{k}\left(\begin{array}{c}
+k\\
+j
+\end{array}\right)\left(-1\right)^{k-j}c_{n-k+j}=r^{k}.
+\]
+
+\end_inset
+
+In matrix form these conditions will look like 
+\begin_inset Formula 
+\begin{align*}
+\frac{n!}{\left(n-k\right)!}\left(\begin{array}{cccc}
+-1 & 1\\
+1 & -2 & 1\\
+ &  &  & \ddots
+\end{array}\right)c^{1} & =l^{k}\\
+\frac{n!}{\left(n-k\right)!}\left(\begin{array}{cccc}
+ &  & -1 & 1\\
+ & 1 & -2 & 1\\
+\iddots
+\end{array}\right)c^{N-1} & =r^{k}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Minimize second derivative
+\end_layout
+
+\begin_layout Standard
+Either, the additional equations can be found with the help of optimality
+ criteria.
+ For example, we need to interpolate the Bezier curve 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ through points 
+\begin_inset Formula $p_{1},p_{2},...$
+\end_inset
+
+ such that the value of the sum 
+\begin_inset Formula 
+\[
+\sum_{m}\int_{0}^{1}\left\Vert \frac{d^{2}\Gamma_{m}\left(t\right)}{dt^{2}}\right\Vert ^{2}dt
+\]
+
+\end_inset
+
+be minimal.
+\end_layout
+
+\begin_layout Subsection
+Evaluate 
+\begin_inset Formula $\int_{0}^{1}\left\Vert \Phi\left(t\right)\right\Vert ^{2}dt$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let the curve 
+\begin_inset Formula $\Phi\left(t\right)$
+\end_inset
+
+ is the second derivative (or a 
+\begin_inset Formula $k$
+\end_inset
+
+-th order derivative) of the curve 
+\begin_inset Formula $\Gamma\left(t\right)$
+\end_inset
+
+.
+ Then, 
+\begin_inset Formula $\Phi\left(t\right)$
+\end_inset
+
+ is also a Bezier curve of degree 
+\begin_inset Formula $v$
+\end_inset
+
+, so it can be represented as 
+\begin_inset Formula 
+\begin{align*}
+\Phi\left(t\right) & =\sum_{i=0}^{v}b_{i,v}\left(t\right)d_{i}\\
+ & =B_{v}\left(t\right)d
+\end{align*}
+
+\end_inset
+
+with come coefficients 
+\begin_inset Formula $d\in\mathbb{R}^{\left(v+1\right)\times k}$
+\end_inset
+
+.
+ The matrix 
+\begin_inset Formula $B_{v}\left(t\right)d$
+\end_inset
+
+ is of dimension 
+\begin_inset Formula $1\times k$
+\end_inset
+
+.
+ The square of it's norm is 
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \Phi\right\Vert ^{2} & =\Phi\Phi^{T}\\
+ & =\mathbf{trace}\left(\Phi^{T}\Phi\right)\\
+ & =\mathbf{trace}\left(d^{T}B^{T}Bd\right).
+\end{align*}
+
+\end_inset
+
+Let us find the integral
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{1}\left\Vert \Phi\left(t\right)\right\Vert ^{2}dt & =\mathbf{trace}\left(d^{T}\left[\int_{0}^{1}B^{T}Bdt\right]d\right).
+\end{align*}
+
+\end_inset
+
+The integral 
+\begin_inset Formula 
+\[
+\int_{0}^{1}B^{T}Bdt
+\]
+
+\end_inset
+
+is 
+\begin_inset Formula 
+\[
+\int_{0}^{1}b_{i,v}\left(t\right)b_{j,v}\left(t\right)dt=\left(\begin{array}{c}
+v\\
+i
+\end{array}\right)\left(\begin{array}{c}
+v\\
+j
+\end{array}\right)\int_{0}^{1}t^{i+j}\left(1-t\right)^{2v-i-j}dt.
+\]
+
+\end_inset
+
+This can be found analytically since
+\begin_inset Formula 
+\[
+\int_{0}^{1}t^{a}\left(1-t\right)^{b}dt=\frac{a!b!}{\left(a+b+1\right)!}.
+\]
+
+\end_inset
+
+Let us denote 
+\begin_inset Formula 
+\begin{align*}
+W_{v} & :=\int_{0}^{1}b_{i,v}\left(t\right)b_{j,v}\left(t\right)dt=\left(\begin{array}{c}
+v\\
+i
+\end{array}\right)\left(\begin{array}{c}
+v\\
+j
+\end{array}\right)\frac{\left(i+j\right)!\left(2v-i-j\right)!}{\left(2v+1\right)!}\\
+i,j & =1..v.
+\end{align*}
+
+\end_inset
+
+Come back to the expression 
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{1}\left\Vert \Phi\left(t\right)\right\Vert ^{2}dt & =\mathbf{trace}\left(d\left[\int_{0}^{1}B^{T}Bdt\right]d\right)\\
+ & =\mathbf{trace}\left(d^{T}W_{v}d\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Minimization problem
+\end_layout
+
+\begin_layout Standard
+Recall that 
+\begin_inset Formula $\Phi\equiv\frac{d^{2}\Gamma}{dt^{2}}=B_{n-2}D_{2}c$
+\end_inset
+
+.
+ Then, the minimization problem is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\sum_{m}\int_{0}^{1}\left\Vert \Phi_{m}\right\Vert ^{2}dt & =\sum_{m}\mathbf{trace}\left(\left(d^{m}\right)^{T}W_{v}d^{m}\right)dt\\
+ & =\mathbf{trace}\left(c^{T}\left[\begin{array}{ccc}
+D_{2}^{T}W_{n-2}D_{2}\\
+ & D_{2}^{T}W_{n-2}D_{2}\\
+ &  & \ddots
+\end{array}\right]c\right)dt.
+\end{align*}
+
+\end_inset
+
+Denote 
+\begin_inset Formula 
+\[
+Q:=\left[\begin{array}{ccc}
+D_{2}^{T}W_{n-2}D_{2}\\
+ & D_{2}^{T}W_{n-2}D_{2}\\
+ &  & \ddots
+\end{array}\right]\in\mathbb{R}^{\left(n+1\right)\cdot\left(N-1\right)\times\left(n+1\right)\cdot\left(N-1\right)},
+\]
+
+\end_inset
+
+then the optimization problem is 
+\begin_inset Formula 
+\begin{align*}
+ & \mathbf{minimize}_{X\in\mathbb{R}^{\left(N-1\right)\cdot\left(n+1\right)\times k}}\mathbf{trace}\left(X^{T}QX\right)\\
+ & \text{s.t.}\\
+ & AX=B
+\end{align*}
+
+\end_inset
+
+It is assumed that the system 
+\begin_inset Formula $AX=B$
+\end_inset
+
+ is undetermined.
+ Let 
+\begin_inset Formula $A\in\mathbb{R}^{a\times b}$
+\end_inset
+
+, 
+\begin_inset Formula $a<b$
+\end_inset
+
+, 
+\begin_inset Formula $B\in\mathbb{R}^{a\times k}$
+\end_inset
+
+.
+ The matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ has a non-trivial right-annihilator matrix 
+\begin_inset Formula $A_{\perp}\in\mathbb{R}^{b\times d}$
+\end_inset
+
+ (i.e.
+ 
+\begin_inset Formula $AA_{\perp}=0$
+\end_inset
+
+), here 
+\begin_inset Formula $d$
+\end_inset
+
+ is the dimension of the null-space of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $X_{1}\in\mathbb{R}^{b\times k}$
+\end_inset
+
+ is a particular solution of the system, then the general solution can be
+ written as 
+\begin_inset Formula 
+\begin{align*}
+X & =X_{1}+A_{\perp}Y\\
+\forall Y & \in\mathbb{R}^{d\times k}
+\end{align*}
+
+\end_inset
+
+Then, the goal is to find 
+\begin_inset Formula $Y$
+\end_inset
+
+ which minimizes 
+\begin_inset Formula 
+\begin{align*}
+\mathbf{trace}\left(X^{T}QX\right) & =\mathbf{trace}\left(\left(Y^{T}A_{\perp}^{T}+X_{1}^{T}\right)Q\left(X_{1}+A_{\perp}Y\right)\right).
+\end{align*}
+
+\end_inset
+
+The solution to this problem is the solution of the linear system
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\[
+A_{\perp}^{T}QA_{\perp}\cdot Y=-A_{\perp}^{T}QX_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\int_{0}^{1}\left\Vert \Phi\left(t\right)\right\Vert ^{2}dt$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We know that 
+\begin_inset Formula 
+\[
+\frac{d^{2}\Gamma\left(t\right)}{dt^{2}}=B_{n-2}\left(t\right)D_{2}c.
+\]
+
+\end_inset
+
+The dimension of the product 
+\begin_inset Formula $B_{n-2}\left(t\right)D_{2}c$
+\end_inset
+
+ is 
+\begin_inset Formula $1\times n-$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Let us find the dot product 
+\begin_inset Formula 
+\[
+\frac{d^{2}\Gamma\left(t\right)}{dt^{2}}\cdot\frac{d^{2}\Gamma\left(t\right)}{dt^{2}}=
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Find 
+\begin_inset Formula $\left\Vert \frac{d^{2}p}{dt^{2}}\right\Vert ^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $p\left(t\right)=\sum_{i=0}^{n}b_{i,n}\left(t\right)c_{i}=:B_{n}c\in\mathbb{R}^{1\times k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $B_{n}\in\mathbb{R}^{1\times\left(n+1\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $c\in\mathbb{R}^{\left(n+1\right)\times k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+—
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left\Vert \frac{d^{2}p}{dt^{2}}\right\Vert ^{2}=p''\cdot p''$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+p'' & =n\left(n-1\right)\sum_{i=0}^{n-2}b_{i,n-2}\left(t\right)\left(c_{i+2}-2c_{i+1}+c_{i}\right)\\
+ & =:\underbrace{B_{n-2}\left(t\right)}_{1\times\left(n-2\right)}\underbrace{D_{2}c}_{\left(n-2\right)\times k}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+Used 
+\begin_inset Formula $c_{i+2}-2c_{i+1}+c_{i}=\left(\begin{array}{cccccc}
+1 & -2 & 1\\
+ & 1 & -2 & 1\\
+ &  & 1 & -2 & 1\\
+ &  &  &  &  & \ddots
+\end{array}\right)\cdot c=:D_{2}\cdot c$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+where 
+\begin_inset Formula 
+\begin{align*}
+D_{2} & :=n\left(n-1\right)\left(\begin{array}{cccccc}
+1 & -2 & 1\\
+ & 1 & -2 & 1\\
+ &  & 1 & -2 & 1\\
+ &  &  &  &  & \ddots
+\end{array}\right)\in\mathbb{R}^{\left(n-2\right)\times n}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Then 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\begin{align*}
+\left\Vert \frac{d^{2}p}{dt^{2}}\right\Vert ^{2} & =B_{n-2}D_{2}cc^{T}D_{2}^{T}B_{n-2}^{T}\\
+ & =\mathbf{trace}\left(c^{T}D_{2}^{T}B_{n-2}^{T}B_{n-2}D_{2}c\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Find 
+\begin_inset Formula $\int\left\Vert \frac{d^{2}p}{dt^{2}}\right\Vert ^{2}dt$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Integrate 
+\begin_inset Formula 
+\begin{align*}
+\int_{0}^{1}\left\Vert \frac{d^{2}p}{dt^{2}}\right\Vert ^{2}dt & =\int_{0}^{1}\mathbf{trace}\left(c^{T}D_{2}^{T}B_{n-2}^{T}B_{n-2}D_{2}c\right)dt\\
+ & =\mathbf{trace}\left(c^{T}D_{2}^{T}\left[\int_{0}^{1}B_{n-2}^{T}B_{n-2}dt\right]D_{2}c\right)
+\end{align*}
+
+\end_inset
+
+Denote 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+W & :=\int_{0}^{1}B_{n-2}^{T}B_{n-2}dt\\
+\int_{0}^{1}b_{i,v}\left(t\right)b_{j,v}\left(t\right)dt & =\left(\begin{array}{c}
+v\\
+i
+\end{array}\right)\left(\begin{array}{c}
+v\\
+j
+\end{array}\right)\int_{0}^{1}t^{i+j}\left(1-t\right)^{2v-i-j}dt\\
+\int_{0}^{1}t^{a}\left(1-t\right)^{b}dt & =\frac{\Gamma\left(a+1\right)\Gamma\left(b+1\right)}{\Gamma\left(a+b+2\right)}\\
+ & =\frac{a!b!}{\left(a+b+1\right)!}\\
+\int_{0}^{1}b_{i,v}\left(t\right)b_{j,v}\left(t\right)dt & =\left(\begin{array}{c}
+v\\
+i
+\end{array}\right)\left(\begin{array}{c}
+v\\
+j
+\end{array}\right)\frac{\left(i+j\right)!\left(2v-i-j\right)!}{\left(2v+1\right)!}\\
+W_{ij} & =\left(\begin{array}{c}
+v\\
+i
+\end{array}\right)\left(\begin{array}{c}
+v\\
+j
+\end{array}\right)\frac{\left(i+j\right)!\left(2v-i-j\right)!}{\left(2v+1\right)!}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+—
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $p''=B_{n-2}D_{2}c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathbf{trace}p''^{T}p''=c^{T}D_{2}^{T}\left[\int B_{n-2}^{T}B_{n-2}dt\right]D_{2}c$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Curve which minimizes 
+\begin_inset Formula $\int_{0}^{1}\left\Vert \ddot{p}\left(t\right)\right\Vert ^{2}dt$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
