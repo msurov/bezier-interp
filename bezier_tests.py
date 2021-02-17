@@ -1,7 +1,8 @@
 import numpy as np
 from bezier import \
     interpolate, eval_basis, eval_bezier, \
-    eval_basis_scalar, bezier2poly, get_deriv_mat
+    eval_basis_scalar, bezier2poly, get_deriv_mat, \
+    eval_bezier_deriv, eval_bezier_length
 from numpy.polynomial.polynomial import polymul, polypow, polyval, polyder
 
 
@@ -102,7 +103,31 @@ def test_eval_bezier():
     assert np.allclose(vals1, vals2)
 
 
+def test_bezier_deriv():
+    from scipy.interpolate import make_interp_spline
+    order = 3
+    t = np.linspace(0, 1, 100)
+    C = np.random.normal(size=(order+1,2))
+    vals1 = eval_bezier(C, t)
+    sp = make_interp_spline(t, vals1)
+    vals2 = eval_bezier_deriv(C, t)
+    assert np.allclose(sp(t, 1), vals2)
+
+
+def test_bezier_length():
+    order = 3
+    t = np.linspace(0, 1, 1000)
+    C = np.random.normal(size=(order+1,2))
+    vals = eval_bezier(C, t)
+    d = np.diff(vals, axis=0)
+    l1 = np.sum(np.linalg.norm(d, axis=1))
+    l2 = eval_bezier_length(C, np.array([0.4, 0.6, 1.]))
+    assert np.allclose(l1, l2, atol=1e-3)
+
+
 if __name__ == '__main__':
+    np.random.seed(0)
+    test_bezier_length()
     test_bezier_deriv()
     test_eval_basis_scalar()
     test_interpolate()

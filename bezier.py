@@ -2,16 +2,16 @@ import numpy as np
 from scipy.special import binom, factorial
 import matplotlib.pyplot as plt
 from numpy.polynomial.polynomial import polymul, polypow, polyval
-
+from scipy.integrate import ode
 
 
 def bezier2poly(coefs):
-    '''
+    R'''
         Parameters
         ----------
         `coefs` numpy.array of dimensions NxM
         the coefficients define a Bezier curve of order N-1
-        in M-dimensional space \\
+        in M-dimensional space \
         `returns` polynomial coefficients
     '''
     coefs = np.array(coefs)
@@ -82,11 +82,45 @@ def eval_basis(n : int, t : float):
     return np.power(t, i) * np.power(1 - t, n - i) * C
 
 
-def eval_bezier(ctrls : np.ndarray, t : float):
+def eval_bezier(ctrls : np.ndarray, t : np.ndarray):
     assert np.all(t <= 1.) and np.all(t >= 0.)
     nctrls,_ = ctrls.shape
     B = eval_basis(nctrls - 1, t)
     return B @ ctrls
+
+
+def eval_bezier_deriv(ctrls : np.ndarray, t : np.ndarray):
+    assert np.all(t <= 1.) and np.all(t >= 0.)
+    nctrls,_ = ctrls.shape
+    DB = eval_basis(nctrls - 2, t)
+    return (nctrls - 1) * DB @ np.diff(ctrls, axis=0)
+
+
+def eval_bezier_length(ctrls : np.ndarray, t : np.ndarray):
+    assert np.all(t <= 1.) and np.all(t >= 0.)
+    nctrls,_ = ctrls.shape
+    DC = (nctrls - 1) * np.diff(ctrls, axis=0)
+
+    def rhs(v, _):
+        DB = eval_basis(nctrls - 2, v)
+        return np.linalg.norm(DB @ DC)
+
+    solver = ode(rhs)
+    solver.set_integrator('dopri5')
+    solver.set_initial_value(0., 0.)
+    nt = len(t)
+    vals = np.zeros(nt)
+
+    for i in range(nt):
+        if t[i] == 0.:
+            continue
+        solver.integrate(t[i])
+        if not solver.successful:
+            raise Exception('integration error')
+        assert np.allclose(solver.t, t[i])
+        vals[i] = solver.y
+    
+    return vals
 
 
 def minimize_trace(A, B, W):
@@ -134,23 +168,19 @@ def minimize_trace(A, B, W):
 
 
 def interpolate(pts, order, derivs_left=[], derivs_right=[]):
-    '''
+    R'''
         Interpolate list of points `pts` by a Bezier curve
 
         Parameters
         ----------
-        `pts` ndarray of size NxD, the points to be interpolated
-        
-        `order` degree of the Bezier curve
-        
-        `derivs_left` left boundary conditions
-
-        `derivs_right` right boundary conditions in the form
+        `pts` ndarray of size NxD, the points to be interpolated \
+        `order` degree of the Bezier curve \
+        `derivs_left` left boundary conditions \
+        `derivs_right` right boundary conditions in the form \
         [(derivative_order, derivative_value), ...]
         where integer value `derivative_order` is the order of derivative,
         and ndarray of size D `derivative_value` is the value of Bezier's 
-        derivative at the boundary
-
+        derivative at the boundary \
         `returns` ndarray of dimension (N-1)x(order+1)x(D);
         array of control points for each chank
     '''
