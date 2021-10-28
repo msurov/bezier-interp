@@ -1,6 +1,5 @@
 import numpy as np
 from scipy.special import binom, factorial
-import matplotlib.pyplot as plt
 from numpy.polynomial.polynomial import polymul, polypow, polyval
 from scipy.integrate import ode
 
@@ -258,5 +257,4 @@ def interpolate(pts, order, derivs_left=[], derivs_right=[]):
 
     X = np.reshape(X, (npts-1, order + 1, dim))
     return X
-
 
