@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from bezier import interpolate, eval_bezier
+from bezier_interp.bezier import interpolate, eval_bezier
 from mpl_toolkits.mplot3d import Axes3D
-
+from scipy.interpolate import make_interp_spline
 
 def example():
     pts = np.array([

@@ -28,7 +28,7 @@ def bezier2poly(coefs):
 
 
 def eval_basis_scalar(n):
-    '''
+    R'''
         Evaluate scalar product 
             $$A_ij = \int_0^1 b_{in}(t) * b_{jn}(t) dt$$
         of all basis functions of degree `n`
@@ -48,7 +48,7 @@ def eval_basis_scalar(n):
 
 
 def get_deriv_mat(n, nder):
-    '''
+    R'''
         k-th derivative of Bezier is expressed as
         $$p^{(k)}(t) = \sum_i b_{i,n-k}(t) D_{n,k} c_i$$
         the function returns $D_k$ of dimension (n-k+1)x(n+1)
@@ -63,7 +63,7 @@ def get_deriv_mat(n, nder):
 
 
 def eval_basis(n : int, t : float):
-    '''
+    R'''
         Evaluate basis functions of Bezier
             b_{i,n}(t)
         at point `t`
@@ -123,7 +123,7 @@ def eval_bezier_length(ctrls : np.ndarray, t : np.ndarray):
 
 
 def minimize_trace(A, B, W):
-    '''
+    R'''
         minimize trace(X' W X)
            X
         s.t.

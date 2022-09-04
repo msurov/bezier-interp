@@ -1,5 +1,5 @@
 import numpy as np
-from bezier import \
+from bezier_interp.bezier import \
     interpolate, eval_basis, eval_bezier, \
     eval_basis_scalar, bezier2poly, get_deriv_mat, \
     eval_bezier_deriv, eval_bezier_length
@@ -125,10 +125,14 @@ def test_bezier_length():
     assert np.allclose(l1, l2, atol=1e-3)
 
 
-if __name__ == '__main__':
+def test_all():
     np.random.seed(0)
     test_bezier_length()
     test_bezier_deriv()
     test_eval_basis_scalar()
     test_interpolate()
     test_eval_basis()
+
+
+if __name__ == '__main__':
+    test_all()
